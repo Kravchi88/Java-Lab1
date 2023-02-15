@@ -17,6 +17,7 @@ public class Main {
         System.out.println("div result: " + num1.div(num2));
         num1.showNumberInTrigonometricForm();
 
-
+        // create matrices
+        Matrix matrix1;
     }
 }
