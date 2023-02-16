@@ -29,7 +29,12 @@ public class Matrix {
     public Matrix(int lines, int columns, String[][] stringMatrix){
         this.lines = lines;
         this.columns = columns;
-        this.complexMatrix = Utils.createComplexMatrix(lines, columns, stringMatrix);
+        this.complexMatrix = new Complex[lines][columns];
+        for (int i = 0; i < lines; i++){
+            for (int j = 0; j < columns; j++){
+                complexMatrix[i][j] = new Complex(stringMatrix[i][j]);
+            }
+        }
     }
 
     /**
@@ -44,7 +49,16 @@ public class Matrix {
     }
 
     @Override
-    public String toString() { return Utils.printMatrix(lines, columns, complexMatrix); }
+    public String toString(){
+        String string = "";
+        for (int i = 0; i < lines; i++){
+            for (int j = 0; j < columns; j++){
+                string = string.concat(this.complexMatrix[i][j].toString()+" ");
+            }
+            string = string.concat("\n");
+        }
+        return string;
+    }
 
     /**
      * This method assigns the passed value to a specific element of the matrix.

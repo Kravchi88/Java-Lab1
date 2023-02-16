@@ -89,41 +89,6 @@ public final class Utils {
     }
 
     /**
-     * This method creates a matrix of complex numbers from a matrix of strings provided by the user.
-     * @param lines number of lines
-     * @param columns number of columns
-     * @param stringMatrix matrix of strings
-     * @return Complex[][]
-     */
-    static Complex[][] createComplexMatrix(int lines, int columns, String[][] stringMatrix){
-        Complex[][] complexMatrix = new Complex[lines][columns];
-        for (int i = 0; i < lines; i++){
-            for (int j = 0; j < columns; j++){
-                complexMatrix[i][j] = new Complex(stringMatrix[i][j]);
-            }
-        }
-        return complexMatrix;
-    }
-
-    /**
-     * This method is called in the toString() method to display the matrix on the screen.
-     * @param lines number of lines
-     * @param columns number of columns
-     * @param matrix matrix to be printed
-     * @return String
-     */
-    static String printMatrix(int lines, int columns, Complex[][] matrix){
-        String string = "";
-        for (int i = 0; i < lines; i++){
-            for (int j = 0; j < columns; j++){
-                string = string.concat(matrix[i][j].toString()+" ");
-            }
-            string = string.concat("\n");
-        }
-        return string;
-    }
-
-    /**
      * This method counts the number of characters i in a complex number
      * to determine the imaginary part of the complex number.
      * @param string string
