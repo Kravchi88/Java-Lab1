@@ -1,5 +1,5 @@
 The number of symbols A = 3
-The number of symbols a = 3
+The number of symbols a = 0
 The number of symbols B = 0
 The number of symbols b = 0
 The number of symbols C = 0
