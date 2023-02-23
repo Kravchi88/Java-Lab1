@@ -13,10 +13,19 @@ public class Main {
 
         System.out.println("Enter the input file name:");
         File fileIn = new File(scanString());
-        System.out.println("Enter the output file name:");
-        File fileOut = new File(scanString());
-
         String string = "";
+
+        try {
+
+            Scanner scanner = new Scanner(fileIn);
+            while (scanner.hasNextLine()){
+                string = string.concat(scanner.nextLine());
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("File '" + fileIn + "' not found");
+        }
+
         String upperString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lowerString = "abcdefghijklmnopqrstuvwxyz";
         Map<Character, Integer> map = new LinkedHashMap<>();
@@ -26,30 +35,25 @@ public class Main {
             map.put(lowerString.charAt(i), 0);
         }
 
+        for (char el : string.toCharArray()){
+            if (map.containsKey(el)) { map.put(el, map.get(el) + 1); }
+        }
+
+        System.out.println("Enter the output file name:");
+        File fileOut = new File(scanString());
+
         try (PrintWriter printWriter = new PrintWriter(fileOut)) {
 
-            Scanner scanner = new Scanner(fileIn);
-            while (scanner.hasNextLine()){
-                string = string.concat(scanner.nextLine());
-            }
-            for (char el : string.toCharArray()){
-                if (map.containsKey(el)) { map.put(el, map.get(el) + 1); }
+            if (!fileOut.exists()){
+                fileOut.createNewFile();
             }
 
-            if (fileOut.createNewFile()){
-                for (Map.Entry<Character, Integer> entry : map.entrySet()){
-                    printWriter.println("The number of symbols " + entry.getKey() + " = " + entry.getValue());
-                }
-            } else if (fileOut.exists()){
-                for (Map.Entry<Character, Integer> entry : map.entrySet()){
-                    printWriter.println("The number of symbols " + entry.getKey() + " = " + entry.getValue());
-                }
+            for (Map.Entry<Character, Integer> entry : map.entrySet()){
+                printWriter.println("The number of symbols " + entry.getKey() + " = " + entry.getValue());
             }
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("File '" + fileIn + "' not found");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Some problems with file '" + fileOut + "'. Check maybe it's a directory");
         }
     }
 

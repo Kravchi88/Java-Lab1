@@ -1,8 +1,8 @@
-The number of symbols A = 3
+The number of symbols A = 1
 The number of symbols a = 0
-The number of symbols B = 0
+The number of symbols B = 1
 The number of symbols b = 0
-The number of symbols C = 0
+The number of symbols C = 1
 The number of symbols c = 0
 The number of symbols D = 0
 The number of symbols d = 0
