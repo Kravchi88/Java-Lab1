@@ -1,2 +1,2 @@
-ABC
-1$.И
+Hello, world!
+Hi.
